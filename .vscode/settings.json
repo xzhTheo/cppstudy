@@ -67,6 +67,12 @@
         "concepts": "cpp",
         "algorithm": "cpp",
         "any": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "future": "cpp",
+        "thread": "cpp",
+        "queue": "cpp",
+        "condition_variable": "cpp",
+        "deque": "cpp",
+        "list": "cpp"
     }
 }
