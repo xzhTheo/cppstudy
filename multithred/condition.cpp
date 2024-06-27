@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <queue>
 #include <thread>
+
+
+#ifdef __ANDROID__
+	string port("/dev/ttyUSB1");
+#elif __linux__
+	#include <unistd.h>
+    #include <mutex>
+    #include <condition_variable>
+#endif
 using namespace std;
 //https://www.zhihu.com/question/68017337/answer/796332672
 //https://zhuanlan.zhihu.com/p/75220465
