@@ -73,6 +73,11 @@
         "queue": "cpp",
         "condition_variable": "cpp",
         "deque": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "span": "cpp",
+        "stack": "cpp",
+        "iterator": "cpp"
     }
 }

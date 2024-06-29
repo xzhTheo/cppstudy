@@ -15,6 +15,10 @@ using namespace std;
 //https://www.zhihu.com/question/68017337/answer/796332672
 //https://zhuanlan.zhihu.com/p/75220465
 //https://www.zhihu.com/question/68017337/answer/796332672
+
+//不带参数wait等待前先加锁，原子性地解锁并把线程挂起，收到notify时解开。
+//条件变量被通知后，挂起的线程就被唤醒，但是唤醒也有可能是假唤醒，或者是因为超时等异常情况，所以被唤醒的线程仍要检查条件是否满足，
+//所以 wait 是放在条件循环里面。cv.wait(lock, [] { return ready; }); 相当于：while (!ready) { cv.wait(lock); }。
 template<typename T>
 class MessageQueue
 {
@@ -40,6 +44,7 @@ public:
             return (!m_queue.empty());
 
         });
+        //m_condition.wait(lock);
         T message = m_queue.front();
         std::cout << "prepare pop" << std::endl;
         m_queue.pop();
@@ -71,9 +76,6 @@ public:
 
     void test()
     {
-        m_condition.notify_one();
-        m_condition.notify_one();
-        m_condition.notify_one();
         m_queue.push(1);
         //m_condition.notify_one();
     }
